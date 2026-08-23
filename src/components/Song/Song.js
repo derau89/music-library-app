@@ -1,21 +1,17 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './styles.css';
-const Song = ({ title, artist, album }) => {
-  return (
-    <div className="song-card">
 
-      <div className="song-info">
-        <h5>{title}</h5>
-        <p>{artist}</p>
-        <small>{album}</small>
-      </div>
+function Song({ idAlbum, title, artist, album }) {
+    return (
+        <div>
+            <p>Title: {title}</p>
+            <p>Artist: {artist}</p>
+            <p>Album: {album}</p>
 
-      <button className="btn btn-danger play-btn">
-        ▶
-      </button>
-
-    </div>
-  );
-};
+            <Link to={`/song/${idAlbum}`}>View Details</Link>
+        </div>
+    );
+}
 
 export default Song;
