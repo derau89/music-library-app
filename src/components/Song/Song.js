@@ -1,16 +1,18 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './styles.css';
+import { SongCard, SongInfo, Playbtn } from './styles';
 
-function Song({ idAlbum, title, artist, album }) {
+function Song({ idAlbum, title, artist, album, favorite }) {
     return (
-        <div>
-            <p>Title: {title}</p>
-            <p>Artist: {artist}</p>
-            <p>Album: {album}</p>
+        <SongCard $favorite={favorite}>
+            <SongInfo>
+                <h5>Title: {title}</h5>
+                <p>Artist: {artist}</p>
+                <p>Album: {album}</p>
 
             <Link to={`/song/${idAlbum}`}>View Details</Link>
-        </div>
+            </SongInfo>
+        </SongCard>
     );
 }
 

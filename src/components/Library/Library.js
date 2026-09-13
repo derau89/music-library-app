@@ -1,5 +1,5 @@
 import React from "react";
-import "./Library.css";
+import { Library as StyledLibrary } from "./styles";
 import Song from "../Song/Song";
 import useFetch from "../hooks/useFetchMusic";
 
@@ -19,7 +19,7 @@ function Library({ searchTerm }) {
     }
 
     return (
-        <div>
+        <StyledLibrary>
             {data.album?.map((song) => (
                 <Song
                     key={song.idAlbum}
@@ -27,9 +27,10 @@ function Library({ searchTerm }) {
                     title={song.strAlbum}
                     artist={song.strArtist}
                     album={song.strAlbum}
+                    favorite={false}
                 />
             ))}
-        </div>
+        </StyledLibrary>
     );
 }
 

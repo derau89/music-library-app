@@ -1,12 +1,13 @@
-import "./styles.css";
-import Song from "../Song/Song";
 
-const SearchResults = ({ results = [], addToLibrary }) => {
+import Song from "../Song/Song";
+import { SearchResults, SearchItem, BtnDanger } from "./styles";
+
+const SearchResultsComponent = ({ results = [], addToLibrary }) => {
   return (
-    <div className="search-results">
+    <SearchResults>
 
       {results.map((song) => (
-        <div className="search-item" key={song.id}>
+        <SearchItem key={song.id}>
 
           <Song
             title={song.title}
@@ -14,16 +15,15 @@ const SearchResults = ({ results = [], addToLibrary }) => {
             album={song.album}
           />
 
-          <button className="btn btn-danger" 
-          onClick={() => addToLibrary(song)}>
+          <BtnDanger onClick={() => addToLibrary(song)}>
             Add to Library
-          </button>
+          </BtnDanger>
 
-        </div>
+        </SearchItem>
       ))}
 
-    </div>
+    </SearchResults>
   );
 };
 
-export default SearchResults;
+export default SearchResultsComponent;

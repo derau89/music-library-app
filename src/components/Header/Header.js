@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import './styles.css';
+import { Header as StyledHeader, Title, SearchForm } from './styles';
+
 
 function Header({ appName, setSearchTerm }) {
     const [inputValue, setInputValue] = useState('');
@@ -10,18 +11,19 @@ function Header({ appName, setSearchTerm }) {
         
     };
     return (
-        <header>
-            <h1>{appName}</h1>
-    <form className="search-form" onSubmit={handleSubmit}>
+        <StyledHeader>
+            <Title>{appName}</Title>
+    <SearchForm onSubmit={handleSubmit}>
                 <input
                     type="text"
+                    name="search"
                     placeholder="Search for music..."
                     value={inputValue}
                     onChange={(event) => setInputValue(event.target.value)}
-                />
+/>
                 <button type="submit">Search</button>
-            </form>
-        </header>
+            </SearchForm>
+        </StyledHeader>
 
     );
 }
