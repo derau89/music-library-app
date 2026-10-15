@@ -5,6 +5,7 @@ import Header from "./components/Header/Header";
 import SongDetail from "./components/SongDetail/SongDetail";
 
 
+
 function App() {
     const [searchTerm, setSearchTerm] = useState("");
 

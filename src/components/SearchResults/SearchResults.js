@@ -1,8 +1,11 @@
 
 import Song from "../Song/Song";
 import { SearchResults, SearchItem, BtnDanger } from "./styles";
+import { useDispatch } from 'react-redux';
+import { addSong } from '../../Redux/libraryActions';
 
-const SearchResultsComponent = ({ results = [], addToLibrary }) => {
+const SearchResultsComponent = ({ results = [] }) => {
+  const dispatch = useDispatch();
   return (
     <SearchResults>
 
@@ -10,12 +13,14 @@ const SearchResultsComponent = ({ results = [], addToLibrary }) => {
         <SearchItem key={song.id}>
 
           <Song
-            title={song.title}
-            artist={song.artist}
-            album={song.album}
-          />
+    title={song.title}
+    artist={song.artist}
+    album={song.album}
+    id={song.id}
+    showDelete={false}
+/>
 
-          <BtnDanger onClick={() => addToLibrary(song)}>
+          <BtnDanger onClick={() => dispatch(addSong(song))}>
             Add to Library
           </BtnDanger>
 
