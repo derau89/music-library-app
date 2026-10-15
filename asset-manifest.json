@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/music-library-app/static/css/main.3982bb5f.css",
+    "main.js": "/music-library-app/static/js/main.a34b7e28.js",
+    "index.html": "/music-library-app/index.html",
+    "main.3982bb5f.css.map": "/music-library-app/static/css/main.3982bb5f.css.map",
+    "main.a34b7e28.js.map": "/music-library-app/static/js/main.a34b7e28.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.3982bb5f.css",
+    "static/js/main.a34b7e28.js"
+  ]
+}
