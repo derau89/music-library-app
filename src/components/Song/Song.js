@@ -4,7 +4,8 @@ import { Link } from 'react-router-dom';
 import { SongCard, SongInfo } from './styles';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
-import { removeSong } from '../../Redux/libraryActions';
+import { removeSong } from "../../Redux/slices/librarySlice";
+
 
 function Song({ id, idAlbum, title, artist, album, favorite, showDelete = true }) {
     const dispatch = useDispatch();

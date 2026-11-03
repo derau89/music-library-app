@@ -1,54 +1,45 @@
-
 import React from "react";
+import { useSelector } from "react-redux";
 import { Library as StyledLibrary } from "./styles";
 import Song from "../Song/Song";
 import SearchResultsComponent from "../SearchResults/SearchResults";
-import { useSelector } from "react-redux";
-import useFetch from "../hooks/useFetchMusic";
 
 function Library({ searchTerm }) {
-    const url = searchTerm
-        ? `https://www.theaudiodb.com/api/v1/json/123/searchalbum.php?s=${encodeURIComponent(searchTerm)}`
-        : null;
+  const library = useSelector((state) => state.library.library);
+  const { results, loading, error } = useSelector((state) => state.search);
 
-    const { data, isLoading, error } = useFetch(url);
-    const library = useSelector(state => state);
+  return (
+    <StyledLibrary>
+      {searchTerm && (
+        <>
+          {loading && <p>Cargando...</p>}
 
-    const searchResults = (data?.album || []).map(album => ({
-        id: album.idAlbum,
-        title: album.strAlbum,
-        artist: album.strArtist,
-        album: album.strAlbum,
-    }));
+          {error && <p role="alert">{error}</p>}
 
-    return (
-        <StyledLibrary>
-            {searchTerm && (
-                <>
-                    {!isLoading && !error && searchResults.length > 0 && (
-    <SearchResultsComponent results={searchResults} />
-)}
+          {!loading && !error && results.length > 0 && (
+            <SearchResultsComponent results={results} />
+          )}
 
-{!isLoading && !error && searchResults.length === 0 && (
-    <p>No se encontraron álbumes. Intenta con otro artista.</p>
-)}
-                </>
-            )}
+          {!loading && !error && results.length === 0 && (
+            <p>No se encontraron álbumes. Intenta con otro artista.</p>
+          )}
+        </>
+      )}
 
-            <h2>Mi biblioteca</h2>
+      <h2>Mi biblioteca</h2>
 
-            {library.map((song) => (
-                <Song
-                    key={song.id}
-                    id={song.id}
-                    title={song.title}
-                    artist={song.artist}
-                    album={song.album}
-                    favorite={false}
-                />
-            ))}
-        </StyledLibrary>
-    );
+      {library.map((song) => (
+        <Song
+          key={song.id}
+          id={song.id}
+          title={song.title}
+          artist={song.artist}
+          album={song.album}
+          favorite={false}
+        />
+      ))}
+    </StyledLibrary>
+  );
 }
 
 export default Library;

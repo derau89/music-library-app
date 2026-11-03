@@ -2,7 +2,7 @@
 import Song from "../Song/Song";
 import { SearchResults, SearchItem, BtnDanger } from "./styles";
 import { useDispatch } from 'react-redux';
-import { addSong } from '../../Redux/libraryActions';
+import { addSong } from "../../Redux/slices/librarySlice";
 
 const SearchResultsComponent = ({ results = [] }) => {
   const dispatch = useDispatch();

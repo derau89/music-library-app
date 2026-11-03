@@ -5,7 +5,7 @@ import GlobalStyles from './theme/GlobalStyles';
 import { ThemeProvider } from 'styled-components';
 import Theme from './theme';
 import App from './App';
-import { BrowserRouter } from 'react-router-dom';
+import { HashRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import store from './Redux/store';
 
@@ -14,12 +14,12 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      <BrowserRouter>
+      <HashRouter>
         <ThemeProvider theme={Theme}>
           <GlobalStyles />
           <App />
         </ThemeProvider>
-      </BrowserRouter>
+      </HashRouter>
     </Provider>
   </React.StrictMode>
 );
